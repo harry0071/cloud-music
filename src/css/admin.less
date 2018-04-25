@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 30px;
+    border: 1px solid black;
+    display: flex;
+    height: 90vh;
+    min-width: 500px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#left {
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid green;
+    >li{
+        border-bottom: 1px solid #ddd;
+    }
+    >li:nth-child(even){
+        background: red;
+    }
+}
+
+#right {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    align-items: center;
+}
+
+#form-container{
+    height: 300px;
+}
+
+form#dropzoneUpload {
+    border: 2px dashed green;
+    border-radius: 16px;
+    width: 300px;
+    #files {
+        opacity: 0;
+    }
+    label {
+        width: 300px;
+        height: 100px;
+
+        text-align: center;
+        display: inline-block;
+        padding-top: 40px;
+    }
+}
+
+#add-song {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
