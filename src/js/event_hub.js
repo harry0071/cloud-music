@@ -15,7 +15,7 @@ window.eventHub = {
 
 	},
 	//订阅↓ 把函数放到数组里 订阅的js文件要放在发布之前
-	when(eventName, fn) {
+	listen(eventName, fn) {
 		this.events[eventName] = this.events[eventName] || [];
 		this.events[eventName].push(fn);
 	}

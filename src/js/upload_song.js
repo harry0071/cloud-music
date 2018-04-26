@@ -41,7 +41,8 @@ let fileName,
 				fileSize,
 				fileType,
 				$form = $('#dropzoneUpload'),
-				$iframe = $('#frames1');
+				$iframe = $('#frames1'),
+				$show = $('.show');
 
 			function showFileData(source) {
 				$form.hide()
@@ -56,13 +57,19 @@ let fileName,
 				$iframe.on('load');
 			}
 			$form.submit((ev) => {
-				$('.show').html(`loading........<br>文件名：${fileName}<br>文件类型：${fileType}<br>文件大小：${(fileSize/1024/1024).toFixed(3)} MB`);
+				$show.html(`loading........<br>文件名：${fileName}<br>文件类型：${fileType}<br>文件大小：${(fileSize/1024/1024).toFixed(3)} MB`);
 			});
 
 			$iframe.on('load', (ev) => {
 				event.preventDefault();
-				$('.show').html('请将外链地址复制到下方输入框')
+				$show.html('请将外链地址复制到下方输入框');
+				$iframe.show();
 				$form.show()
 			});
+
+			window.eventHub.listen('saveSong',()=>{
+				$iframe.hide();
+				$show.empty();
+			})
 		
 }
