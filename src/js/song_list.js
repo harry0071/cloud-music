@@ -20,6 +20,16 @@
 			//songs:[{id:1,songName:'1'},{id:2,songName:'2'}]
 			songs:[]
 		},
+		find(){
+
+			var query = new AV.Query('Song');//对应数据库中的Class名称
+		return query.find().then((datas) => {//将这个promise给return出去
+    		//console.log(datas);获取全部数据
+    		datas.forEach( (item, index) => {
+    			this.data.songs.unshift({id:item.id,...item.attributes})
+    		});
+		});
+		},
 	};
 
 	let controller = {
@@ -28,9 +38,10 @@
 			this.model = model;
 			this.view.render(this.model.data);
 			window.eventHub.listen('saveSong',(songData)=>{
-				this.model.data.songs.push(songData);
+				this.model.data.songs.unshift(songData);
 				this.view.render(this.model.data);
-			})
+			});
+			this.model.find().then(()=>{this.view.render(this.model.data)});
 		}
 		
 	};

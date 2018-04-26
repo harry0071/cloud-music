@@ -12,14 +12,18 @@
     flex-direction: column;
     width: 200px;
     border: 1px solid green;
+    overflow-y: scroll;
     >li{
         transition: .5s;
         border-bottom: 1px solid #ddd;
-            &:hover{
+        height: 24px;
+        &:hover{
         background: #d4d4d4;
         }
     }
-
+    >li:empty{
+        background: #ccc;
+    }
 }
 
 #right {
