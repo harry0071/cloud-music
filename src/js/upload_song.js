@@ -45,12 +45,15 @@
 		$show = $('.show');
 
 	function showFileData(source) {
-		$form.hide();
 		let data = {};
 		let file = source.files[0];
+
+		if(!file) return;
 		fileName = file.name;
 		fileSize = file.size;
 		fileType = file.type;
+
+		$form.hide();
 		data={
 			songName:fileName,
 			id:''

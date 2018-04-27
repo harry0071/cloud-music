@@ -111,7 +111,6 @@
 			this.model.save(data)
 				.then(() => {
 					alert('歌曲保存成功!');
-					this.view.reset();
 					window.eventHub.publish('saveSong', JSON.parse(JSON.stringify(this.model.data)));
 				});
 		},

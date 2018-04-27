@@ -30,7 +30,7 @@
 		data: {
 			//songs:[{id:1,songName:'1'},{id:2,songName:'2'}]
 			songs: [],
-			selectedSongId:''
+			selectedSongId:'',
 		},
 		find() {
 
@@ -77,7 +77,10 @@
 		bindEventHub() {
 			window.eventHub.listen('saveSong', (songData) => {
 				this.model.data.songs.unshift(songData);
+				let id = songData.id;
+				this.model.data.selectedSongId = id;
 				this.view.render(this.model.data);
+
 			});
 
 			window.eventHub.listen('upload',()=>{
