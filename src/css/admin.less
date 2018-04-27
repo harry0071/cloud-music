@@ -6,6 +6,7 @@
     border: 1px solid black;
     display: flex;
     height: 90vh;
+    min-height: 350px;
     min-width: 500px;
     max-width: 1200px;
     margin: 0 auto;
@@ -18,9 +19,15 @@
     overflow-y: scroll;
     >li{
         border-bottom: 1px solid #ddd;
-        height: 24px;
+        padding: 6px 2px;
+        cursor: pointer;
+        >p{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         &:hover{
-        background: #d4d4d4;
+            color:red;
         }
     }
     >li:empty{
@@ -38,7 +45,7 @@
 }
 
 #form-container{
-    height: 300px;
+    flex: 1;
 }
 
 form#dropzoneUpload {
@@ -65,4 +72,5 @@ form#dropzoneUpload {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 2;
 }

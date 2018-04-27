@@ -5,26 +5,32 @@
 		`,
 		render(data) {
 			let {
-				songs
+				songs,
+				selectedSongId
 			} = data;
-			let $liList = songs.map((item, index) => {
-				return $(`<li>${item.songName}</li>`);
+			let $liList = songs.map((item) => {
+				let $li = $(`<li data-id="${item.id}"><p class="song-name">${item.songName}</p><p class="singer">${item.singer}</p><p style="display:hidden" data-url="${item.url}"></p></li>`);
+				if(item.id===selectedSongId){
+					$li.addClass('li-active');
+				}
+				return $li;
 			});
 			$(this.el).empty();
 			$liList.forEach((item, index) => {
 				$(this.el).append(item)
 			});
 		},
-		activeLi(li){
-			let $li = $(li);
-			$li.addClass('li-active').siblings('.li-active').removeClass('li-active');
+		removeActiveLi(){
+			let $li = $('li');
+			$li.removeClass('li-active');
 		}
 	};
 
 	let model = {
 		data: {
 			//songs:[{id:1,songName:'1'},{id:2,songName:'2'}]
-			songs: []
+			songs: [],
+			selectedSongId:''
 		},
 		find() {
 
@@ -54,12 +60,37 @@
 		},
 		bindEvents() {
 			$(this.view.el).on('click', 'li',(ev) =>{
-				this.view.activeLi(ev.currentTarget);
+				let id = $(ev.currentTarget).data('id');
+				this.model.data.selectedSongId = id;
+				this.view.render(this.model.data);
+				let data={};
+				let songs = this.model.data.songs;
+				for (var i = 0; i < songs.length; i++) {
+					if (id===songs[i].id) {
+						data = songs[i];
+						break;
+					}
+				}
+				window.eventHub.publish('editSong',JSON.parse(JSON.stringify(data)));
 			});
 		},
 		bindEventHub() {
 			window.eventHub.listen('saveSong', (songData) => {
 				this.model.data.songs.unshift(songData);
+				this.view.render(this.model.data);
+			});
+
+			window.eventHub.listen('upload',()=>{
+				this.view.removeActiveLi();
+			});
+
+			window.eventHub.listen('updateSong', (songData) => {
+				let songs = this.model.data.songs;
+				for (let i = 0; i < songs.length; i++) {
+					if(songs[i].id===songData.id){
+						songs[i]=songData;
+					}
+				}
 				this.view.render(this.model.data);
 			});
 		},
