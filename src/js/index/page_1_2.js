@@ -2,17 +2,19 @@
 {
 	let view = {
 		el: '#new-song',
+		template:'',
 		render(songs) {
 			songs.forEach((song) => {
-				$li = $(`<li data-id="${song.id}">
+				this.template += `<a href="./play.html?id=${song.id}"><li>
                             <div class="song-info">
                                 <p class="song-name">${song.songName}</p>
                                 <p class="singer">${song.singer}</p>
                             </div>
                             <div class="playicon">播放按钮</div>
-                        </li>`);
-				$li.appendTo($(this.el));
+                        </li></a>`;
 			});
+			$(this.template).appendTo($(this.el));
+
 		},
 	};
 	let model = {
