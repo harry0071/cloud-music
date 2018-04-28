@@ -28,11 +28,8 @@
 			this.view = view;
 			this.model = model;
 			this.view.render(this.model.data);
-		},
-		uploadSong() {
-
 		}
-	};
+	}
 
 	controller.init(view, model);
 	///////////////////////////
@@ -45,18 +42,18 @@
 		$show = $('.show');
 
 	function showFileData(source) {
-		let data = {};
 		let file = source.files[0];
 
-		if(!file) return;
+		if (!file) return;
+		let data = {};
 		fileName = file.name;
 		fileSize = file.size;
 		fileType = file.type;
 
 		$form.hide();
-		data={
-			songName:fileName,
-			id:''
+		data = {
+			songName: fileName,
+			id: ''
 		};
 		window.eventHub.publish('upload', data);
 

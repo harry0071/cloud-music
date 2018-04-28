@@ -26,7 +26,7 @@ section.topbar{
   background: #D43C33;
   padding: 17px 10px;
 }
-section.topbar .logo>svg{
+section.topbar .logo>p{
   width: 142px;height: 25px;
   vertical-align: top;
 
@@ -169,7 +169,7 @@ section.art svg{
   width: 230px;
   height: 44px;
 }
-section.art .link-wrapper > a{
+section.art .link-wrapper{
   display: inline-block;
   border: 1px solid;
   line-height: 40px;
