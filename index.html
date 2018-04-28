@@ -19,7 +19,7 @@
                 <div class="logo">
                    <p style="color: white;margin: 0;">STAGE轻音乐</p>
                 </div>
-                <a href="#">关于作者</a>
+                <a href="javascript:;">关于作者</a>
             </section>
             <section class="globalTabs" id="tabs">
                 <ul class="tabs-nav">
@@ -37,7 +37,7 @@
         </div>
         <ol class="tab-content noCollapse">
             <li class="page-1 active">
-                <section class="playlists">
+                <section class="playlists" id="new-playlist">
                     <h2 class="sectionTitle">推荐歌单</h2>
                     <ol class="songs">
                         <li>
@@ -78,12 +78,16 @@
                         </li>
                     </ol>
                 </section>
-                <section class="songs">
+                <section class="songs" id="new-song">
                     <h2 class="sectionTitle">最新音乐</h2>
                     <ol id="songs" class="list">
-                        <div id="songs-loading" class="square-spin" style="margin: 0 auto; width: 50px;">
-                            <div></div>
-                        </div>
+<!--                         <li>
+                            <div class="song-info">
+                                <p class="song-name">歌名</p>
+                                <p class="singer">田馥甄</p>
+                            </div>
+                            <div class="playicon">播放按钮</div>
+                        </li> -->
                     </ol>
                 </section>
                 <section class="art">
