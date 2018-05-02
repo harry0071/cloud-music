@@ -1,19 +1,21 @@
 //最新音乐
 {
 	let view = {
-		el: '#new-song',
+		el: '#songs',
 		template:'',
 		render(songs) {
 			songs.forEach((song) => {
-				this.template += `<a href="./play.html?id=${song.id}"><li>
-                            <div class="song-info">
-                                <p class="song-name">${song.songName}</p>
-                                <p class="singer">${song.singer}</p>
-                            </div>
-                            <div class="playicon">播放按钮</div>
-                        </li></a>`;
+				this.template += `<li>
+                            <a href="play?id=${song.id}">
+                                <h3>${song.songName}</h3>
+                                <p>${song.singer}</p>
+                                <svg class="icon icon-play">
+                                    <use xlink:href="#icon-play"></use>
+                                </svg>
+                            </a>
+                        </li>`;
 			});
-			$(this.template).appendTo($(this.el));
+			$(this.el).html(this.template);
 
 		},
 	};
