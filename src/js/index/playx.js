@@ -43,8 +43,33 @@
 			bg:''
 		},
 		getSongbyId(id) {
-			return $.get(`http://musicapi.leanapp.cn/lyric?id=${id}`, datas=> {
-				this.data.lrc= datas.lrc.lyric;
+			$.ajax({
+	url: `http://music.163.com/api/song/lyric?&id=551338870&lv=-1&kv=-1&tv=-1`,
+	type: 'post',
+	dataType: 'jsonp',
+	
+})
+.done(function(data) {
+	console.log(data);
+})
+
+			////////////////////
+		return $.get(`http://musicapi.leanapp.cn/lyric?id=${id}`,datas => {
+				console.log(datas)
+				if (datas.lrc) {
+					let temps = datas.lrc.lyric.split('\n');//按照回车切割成数组['时间 歌词','时间 歌词']
+					temps.pop();//删除数组最后一个的空内容['']
+					let pattern = /\[\d{2}:\d{2}.\d{2}\]/g;
+					temps.forEach((index, value) => {
+						let time = value.match(pattern);
+						console.log(time)
+					});
+
+					this.data.lrc = temp;
+				}else{
+					this.data.lrc='';
+				}
+				
 			}).then(()=>{
 				return $.get(`http://musicapi.leanapp.cn/song/detail?ids=${id}`, datas => {
 					var singer='';
@@ -71,7 +96,7 @@
 			this.model = model;
 			let id = this.getSongId() || '';
 			this.model.getSongbyId(id).then(() => {
-				console.log(this.model.data)
+				console.log(this.model.data.lrc)
 				this.view.render(this.model.data);
 			});
 			this.bindEvets();
@@ -116,7 +141,7 @@
 
 			}
 			return id;
-		},
+		}
 	};
 
 	controller.init(view, model);

@@ -4,6 +4,10 @@ body{
   font-size: 15px;
   background: white;
 }
+@keyframes circle{0% {transform: rotate(0deg); } 100% {transform: rotate(360deg); } }
+#loading{
+  animation: circle 3s linear infinite;
+}
 .sectionTitle{
   border-left: 2px solid #D43C33;
   font-size: 17px;

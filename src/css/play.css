@@ -1,4 +1,7 @@
 @keyframes circle{0% {transform: rotate(0deg); } 100% {transform: rotate(360deg); } }
+#loading{
+	animation: circle 3s linear infinite;
+}
 #bg{
 	filter: brightness(.4);
 	position: fixed;z-index: -1;
