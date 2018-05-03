@@ -8,6 +8,8 @@
 			template = `<div id="bg" style="background-image:url(${data.bg})"></div>
     <div id="play">
     <audio src="${data.url}"></audio>
+    <div class="logo-container">
+    <img src="../src/imgs/favicon.png" width=24 height=24><p class="logo">STAGE轻音乐</p></div>
       <div class="disc-container">
       <img class="pointer" src="//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862 " alt="">
       <div class="disc">
@@ -124,15 +126,18 @@
 				let $audio = $('audio');
 				let $icon = $('.icon');
 				let $disc = $('.disc-container');
+				let $pointer = $('.pointer');
 				toPlaying = !toPlaying;
 				if (toPlaying) {
 					$audio[0].play();
 					$icon.hide();
 					$disc.addClass('playing');
+					$pointer.addClass('active');
 					$audio.on('ended', () => {
 						toPlaying = false;
 						$icon.show();
 						$disc.removeClass('playing');
+						$pointer.removeClass('active');
 					});
 					$audio.on('timeupdate', ev=> {
 						this.showLrc($audio[0].currentTime);
@@ -141,6 +146,7 @@
 					$audio[0].pause();
 					$icon.show();
 					$disc.removeClass('playing');
+					$pointer.removeClass('active');
 
 				}
 			});
@@ -155,14 +161,9 @@
 				let currentTime = $allP.eq(i).data('time');
 				let nextTime = $allP.eq(i+1).data('time');
 				if (songTime>currentTime && songTime <nextTime) {
-					let height = parseInt($allP.eq(i).css('height'));
-					
-					let move = -height*(i-2);
+					let move = -$allP.eq(i).position().top+32;
 					if (move>0) {
 						move=0;
-					}
-					if (height==0) {
-						move = -height*(i-1-2);
 					}
 
 					$lines.css({
