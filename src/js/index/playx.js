@@ -1,3 +1,5 @@
+//https://api.imjad.cn/cloudmusic.md
+//https://zhuanlan.zhihu.com/p/30246788
 {
 	let view = {
 		el: '#app',
@@ -16,7 +18,7 @@
       </div>
     </div>
     <div class="song-description">
-      <h1>${data.songName}-${data.singer}</h1>
+      <h1>${data.songName} - ${data.singer}</h1>
       <div class="lyric">
         <div class="lines">
           
@@ -30,6 +32,38 @@
     </div>`;
 			$(this.el).html(template);
 		},
+		parseLyric(text) {
+			//将文本分隔成一行一行，存入数组
+			let lines = text.split('\n'),
+				//用于匹配时间的正则表达式，匹配的结果类似[xx:xx.xx]
+				pattern = /\[\d+:\d+.\d+\]/g,
+				//保存最终结果的数组
+				result = [];
+			//去掉不含时间的行
+			while (!pattern.test(lines[0])) {
+				lines = lines.slice(1);
+			};
+			//上面用'\n'生成生成数组时，结果中最后一个为空元素，这里将去掉
+			lines[lines.length - 1].length === 0 && lines.pop();
+			lines.forEach((v /*数组元素值*/ , i /*元素索引*/ , a /*数组本身*/ ) => {
+				//提取出时间[xx:xx.xx]
+				let time = v.match(pattern),
+					//提取歌词
+					value = v.replace(pattern, '');
+				//因为一行里面可能有多个时间，所以time有可能是[xx:xx.xx][xx:xx.xx][xx:xx.xx]的形式，需要进一步分隔
+				time.forEach((v1, i1, a1) => {
+					//去掉时间里的中括号得到xx:xx.xx
+					let t = v1.slice(1, -1).split(':');
+					//将结果压入最终数组
+					result.push([parseInt(t[0]) * 60 + parseFloat(t[1]), value]);
+				});
+			});
+			//最后将结果数组中的元素按时间大小排序，以便保存之后正常显示歌词
+			result.sort((a, b) => {
+				return a[0] - b[0];
+			});
+			return result;
+		}
 
 	};
 	let model = {
@@ -39,54 +73,34 @@
 			singer: '',
 			url: '',
 			pic: '',
-			lrc:'',
-			bg:''
+			lrc: '',
+			bg: ''
 		},
 		getSongbyId(id) {
-			$.ajax({
-	url: `http://music.163.com/api/song/lyric?&id=551338870&lv=-1&kv=-1&tv=-1`,
-	type: 'post',
-	dataType: 'jsonp',
-	
-})
-.done(function(data) {
-	console.log(data);
-})
-
-			////////////////////
-		return $.get(`http://musicapi.leanapp.cn/lyric?id=${id}`,datas => {
-				console.log(datas)
+			return $.get(`https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}`, datas => {
 				if (datas.lrc) {
-					let temps = datas.lrc.lyric.split('\n');//按照回车切割成数组['时间 歌词','时间 歌词']
-					temps.pop();//删除数组最后一个的空内容['']
-					let pattern = /\[\d{2}:\d{2}.\d{2}\]/g;
-					temps.forEach((index, value) => {
-						let time = value.match(pattern);
-						console.log(time)
-					});
-
-					this.data.lrc = temp;
-				}else{
-					this.data.lrc='';
+					this.data.lrc = datas.lrc.lyric;
+				} else {
+					this.data.lrc = '';
 				}
-				
-			}).then(()=>{
-				return $.get(`http://musicapi.leanapp.cn/song/detail?ids=${id}`, datas => {
-					var singer='';
+
+			}).then(() => {
+				return $.get(`https://api.imjad.cn/cloudmusic/?type=detail&id=${id}`, datas => {
+					var singer = '';
 					if (datas.songs[0].ar[1]) {
-						singer=datas.songs[0].ar[0].name + ' / ' + datas.songs[0].ar[1].name
-					}else{
+						singer = datas.songs[0].ar[0].name + ' / ' + datas.songs[0].ar[1].name
+					} else {
 						singer = datas.songs[0].ar[0].name;
 					}
-				Object.assign(this.data,{
-					id:id,
-					songName: datas.songs[0].name,
-					singer: singer,
-					url:`http://music.163.com/song/media/outer/url?id=${id}.mp3`,
-					pic:datas.songs[0].al.picUrl+'?imageView&thumbnail=170y170&quality=75&tostatic=0',
-					bg:datas.songs[0].al.picUrl+'?imageView&thumbnail=20y20&quality=75&tostatic=0'
+					Object.assign(this.data, {
+						id: id,
+						songName: datas.songs[0].name,
+						singer: singer,
+						url: `http://music.163.com/song/media/outer/url?id=${id}.mp3`,
+						pic: datas.songs[0].al.picUrl + '?imageView&thumbnail=170y170&quality=75&tostatic=0',
+						bg: datas.songs[0].al.picUrl + '?imageView&thumbnail=20y20&quality=75&tostatic=0'
+					});
 				});
-			});
 			})
 		}
 	};
@@ -96,32 +110,67 @@
 			this.model = model;
 			let id = this.getSongId() || '';
 			this.model.getSongbyId(id).then(() => {
-				console.log(this.model.data.lrc)
 				this.view.render(this.model.data);
+				let result = this.view.parseLyric(this.model.data.lrc);
+				for (var i = 0; i < result.length; i++) {
+					$(`<p data-time=${result[i][0]}>${result[i][1]}</p>`).appendTo('.lines')
+				}
 			});
 			this.bindEvets();
 		},
-		bindEvets(){
+		bindEvets() {
 			let toPlaying = false;
-			$(this.view.el).on('click', '.disc', ()=> {
+			$(this.view.el).on('click', '.disc', () => {
 				let $audio = $('audio');
 				let $icon = $('.icon');
 				let $disc = $('.disc-container');
-				toPlaying=!toPlaying;
+				toPlaying = !toPlaying;
 				if (toPlaying) {
 					$audio[0].play();
 					$icon.hide();
 					$disc.addClass('playing');
-					$audio.on('ended',() => {
-						toPlaying=false;
+					$audio.on('ended', () => {
+						toPlaying = false;
 						$icon.show();
 						$disc.removeClass('playing');
 					});
-				}else{
+					$audio.on('timeupdate', ev=> {
+						this.showLrc($audio[0].currentTime);
+					});
+				} else {
 					$audio[0].pause();
 					$icon.show();
 					$disc.removeClass('playing');
 
+				}
+			});
+		},
+		showLrc(songTime){
+			let $allP = $(this.view.el).find('.lines>p');
+			let $lines = $(this.view.el).find('.lines');
+			$allP.each((i,item) =>{
+				if (i>$allP.length) {
+					i=0;
+				}
+				let currentTime = $allP.eq(i).data('time');
+				let nextTime = $allP.eq(i+1).data('time');
+				if (songTime>currentTime && songTime <nextTime) {
+					let height = parseInt($allP.eq(i).css('height'));
+					
+					let move = -height*(i-2);
+					if (move>0) {
+						move=0;
+					}
+					if (height==0) {
+						move = -height*(i-1-2);
+					}
+
+					$lines.css({
+						'-webkit-transform': `translateY(${move}px)`,
+						'-ms-transform': `translateY(${move}px)`,
+						'transform': `translateY(${move}px)`
+					});
+					$allP.removeClass('active').eq(i).addClass('active');
 				}
 			});
 		},
