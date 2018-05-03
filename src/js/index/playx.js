@@ -131,13 +131,11 @@
 				if (toPlaying) {
 					$audio[0].play();
 					$icon.hide();
-					$disc.addClass('playing');
-					$pointer.addClass('active');
+					$disc.add($pointer).addClass('active');
 					$audio.on('ended', () => {
 						toPlaying = false;
 						$icon.show();
-						$disc.removeClass('playing');
-						$pointer.removeClass('active');
+						$disc.add($pointer).removeClass('active');
 					});
 					$audio.on('timeupdate', ev=> {
 						this.showLrc($audio[0].currentTime);
@@ -145,8 +143,7 @@
 				} else {
 					$audio[0].pause();
 					$icon.show();
-					$disc.removeClass('playing');
-					$pointer.removeClass('active');
+					$disc.add($pointer).removeClass('active');
 
 				}
 			});

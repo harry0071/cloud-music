@@ -47,8 +47,8 @@ background: url('http://s3.music.126.net/m/s/img/disc_default.png?7c9b3adc16f548
  animation: circle 20s infinite linear; 
   animation-play-state: paused;
 }
-.disc-container.playing .light,
-.disc-container.playing .cover{
+.disc-container.active .light,
+.disc-container.active .cover{
   animation-play-state: running;
 }
 
