@@ -155,17 +155,14 @@
 			let $allP = $(this.view.el).find('.lines>p');
 			let $lines = $(this.view.el).find('.lines');
 			$allP.each((i,item) =>{
-				if (i>$allP.length) {
-					i=0;
-				}
 				let currentTime = $allP.eq(i).data('time');
 				let nextTime = $allP.eq(i+1).data('time');
+				let move = 0;
 				if (songTime>currentTime && songTime <nextTime) {
-					let move = -$allP.eq(i).position().top+32;
-					if (move>0) {
+					move = -$allP.eq(i).position().top+32;
+					if (move>0 || i==0) {
 						move=0;
 					}
-
 					$lines.css({
 						'-webkit-transform': `translateY(${move}px)`,
 						'-ms-transform': `translateY(${move}px)`,
