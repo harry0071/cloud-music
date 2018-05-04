@@ -5,7 +5,7 @@
 		el: '#app',
 		template: ``,
 		render(data) {
-			template = `<div id="bg" style="background-image:url(${data.bg})"></div>
+			this.template = `<div id="bg" style="background-image:url(${data.bg})"></div>
     <div id="play">
     <audio src="${data.url}"></audio>
     <div class="logo-container">
@@ -32,7 +32,7 @@
       <a class="main" href="#">下载</a>
     </div>
     </div>`;
-			$(this.el).html(template);
+			$(this.el).html(this.template);
 		},
 		parseLyric(text) {
 			//将文本分隔成一行一行，存入数组

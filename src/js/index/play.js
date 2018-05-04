@@ -3,12 +3,12 @@
 		el: '#play',
 		template: ``,
 		render(data) {
-			template = `<audio src="${data.url}"></audio>
+			this.template = `<audio src="${data.url}"></audio>
 				<div>
            			<button>播放</button>
        			</div>
 			`;
-			$(this.el).html(template);
+			$(this.el).html(this.template);
 		}
 	};
 	let model = {
