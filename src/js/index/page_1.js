@@ -27,7 +27,7 @@
 			$('<script src="src/js/index/page_1_1.js"></script>').appendTo('body');
 		},
 		loadModule2(){
-			$('<script src="src/js/index/page_1_2x.js"></script>').appendTo('body');
+			$('<script src="src/js/index/page_1_2x-easymock.js"></script>').appendTo('body');
 		},
 	};
 

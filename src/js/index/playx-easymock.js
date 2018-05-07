@@ -1,5 +1,3 @@
-//https://api.imjad.cn/cloudmusic.md
-//https://zhuanlan.zhihu.com/p/30246788
 {
 	let view = {
 		el: '#app',
@@ -27,10 +25,10 @@
         </div>
       </div>
     </div>
-    <div class="links">
+    <!-- <div class="links">
       <a href="#">打开</a>
       <a class="main" href="#">下载</a>
-    </div>
+    </div> -->
     </div>`;
 			$(this.el).html(this.template);
 			let title = $('.song-description>h1').html();
@@ -81,7 +79,7 @@
 			bg: ''
 		},
 		getSongbyId(id) {
-			return $.get(`https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}`, datas => {
+			return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}`, ({datas}) => {
 				if (datas.lrc) {
 					this.data.lrc = datas.lrc.lyric;
 				} else {
@@ -89,7 +87,7 @@
 				}
 
 			}).then(() => {
-				return $.get(`https://api.imjad.cn/cloudmusic/?type=detail&id=${id}`, datas => {
+				return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/song/detail?ids=${id}`, ({datas}) => {
 					var singer = '';
 					if (datas.songs[0].ar[1]) {
 						singer = datas.songs[0].ar[0].name + ' / ' + datas.songs[0].ar[1].name

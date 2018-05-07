@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>网易云音乐数据</title>
+</head>
+
+<body>
+    songlist【推荐歌单】:
+    <textarea id="playlist" cols="30" rows="10"></textarea>
+    <button id="save1">保存</button>
+    <br> newsong【最新音乐】：
+    <textarea id="newsong" cols="30" rows="10"></textarea>
+    <button id="save2">保存</button>
+    <br> lyric【歌词】：
+    <textarea name="" id="lyric" cols="30" rows="10"></textarea>
+    <button id="save3">保存</button>
+    <br> details【歌曲详情】：
+    <textarea name="" id="song-details" cols="30" rows="10"></textarea>
+    <button id="save4">保存</button>
+    <script src="//cdn1.lncld.net/static/js/3.6.8/av-min.js"></script>
+    <script>
+        var APP_ID = 'gBaUKoVvmq490WgrYu5nuFu8-gzGzoHsz';
+        var APP_KEY = 'WxCh0tOXhf7zUYRCkvSbK1M4';
+        var btn = document.getElementById('save');
+        var playlistInput = document.getElementById('playlist');
+        var newsongInput = document.getElementById('newsong');
+        var lyricInput = document.getElementById('lyric');
+        var songdetailInput = document.getElementById('song-details');
+        var btns = document.getElementsByTagName('button');
+
+        AV.init({
+        	appId: APP_ID,
+        	appKey: APP_KEY
+        });
+
+        var playlist = AV.Object.createWithoutData('PlayList', '5aed9de3a22b9d00443ed095');
+        btns[0].onclick = function() {
+        	playlist.set('data', playlistInput.value);
+        	playlist.save().then(({
+        		attributes
+        	}) => console.log(JSON.parse(attributes.data)));
+        }
+
+        var newsong = AV.Object.createWithoutData('NewSong', '5aed9ab4fb4ffe0068b57b67');
+        btns[1].onclick = function() {
+        	newsong.set('data', newsongInput.value);
+        	newsong.save().then(({
+        		attributes
+        	}) => console.log(JSON.parse(attributes.data)));
+
+        	// 	newsong.save({
+        	//   data: newsongInput.value,
+        	// }).then(function({attributes}) {
+        	//   console.log(JSON.parse(attributes.data));
+        	// })
+        }
+
+        var Lyric = AV.Object.extend('Lyric');
+        var lyric = new Lyric();
+
+        btns[2].onclick = function (){
+        	var data = lyricInput.value;
+        	lyric.save({
+        	data
+        }).then(({
+        	attributes
+        }) => console.log(JSON.parse(attributes.data)));
+        alert('记得刷新')
+        }
+
+        var SongDetails = AV.Object.extend('SongDetails');
+        var songdetails = new SongDetails();
+
+        btns[3].onclick = function (){
+        	var data = songdetailInput.value;
+        	songdetails.save({
+        	data
+        }).then(({
+        	attributes
+        }) => console.log(JSON.parse(attributes.data)));
+        alert('记得刷新')
+        }
+        /*********
+        btns[0].onclick = function (){
+
+        var query = new AV.Query('NewSong');//对应数据库中的Class名称
+        query.find().then(function(datas) {
+            //console.log(datas);获取全部数据
+            datas.forEach(function({attributes}) {
+            	console.log(JSON.parse(attributes.data)); //遍历数据
+            });
+        });
+        }
+        *******/
+    </script>
+</body>
+
+</html>
