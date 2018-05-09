@@ -42,18 +42,18 @@
                 <h3 class="u-smtitle">歌曲列表</h3>
                 <ol class="u-songs">`;
 
-                $(data.songs).each((i, songs) =>{
+                $(data.songs).each((i, song) =>{
                 	this.template += `
                     <li class="u-song">
-                    	<a href="play?id=${songs.id}" class="playsong">
+                    	<a href="play?id=${song.id}" class="playsong">
                         <div class="sgi_fl">${i+1}</div>
                         <div class="sgi_fr f-bd f-bd-btm">
                             <div class="sgich_fl">
                                 <div class="f-thide sgich_tl">
-                                	${songs.songName}
+                                	${song.songName}${song.alia}
                                 </div>
                                 <div class="f-thide sgich_info">
-                                    ${songs.singer} - ${songs.album}
+                                    ${song.singer} - ${song.album}
                                 </div>
                             </div>
                             <div class="sgich_fr">
@@ -96,11 +96,17 @@
 				let tracks = playlist.tracks;
 				$(tracks).each((index, el) =>{
 					let {id,name,ar,al}=el;
+					let alia = '';
+
+					if(el.alia.length>0){
+						alia = `(${el.alia[0]})`;
+					}
 					this.data.songs.push({
 						id,
 						songName:name,
 						singer:ar[0].name,
-						album:al.name
+						album:al.name,
+						alia:alia,
 
 					});
 				});
@@ -114,7 +120,6 @@
 			let id = this.getId() || '';
 			this.model.getByid(id).then(()=>{
 				this.view.render(this.model.data);
-				console.log(1)
 			});
 
 		},

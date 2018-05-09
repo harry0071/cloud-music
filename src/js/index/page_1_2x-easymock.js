@@ -30,6 +30,7 @@
 		find() {
 			return $.get('https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/personalized/newsong', datas => {
 				$(datas.result).each((index,item) => {
+					let alias,singer2;
 					if(item.song.alias[0]){
 						alias = `(${item.song.alias[0]})`;
 					}else {
