@@ -5,30 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>STAGE轻音乐后台管理面板</title>
-    <link rel="stylesheet" type="text/css" href="dist/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="src/css/normalize.css">
     <link rel="stylesheet/less" type="text/css" href="src/css/admin.less">
     <script src="https://cdn.bootcss.com/less.js/3.0.2/less.min.js"></script>
 </head>
 
 <body>
 <div class="container">
-	<ul id="left">
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
-		<li>xxx</li>
+	<ul id="left" class="song-list">
+<!-- 		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li> -->
 	</ul>
 	<div id="right">
         <div id="form-container">
-    <form action="https://catbox.moe/user/api.php" method="post" enctype="multipart/form-data" id="dropzoneUpload" target="frame1">
+    <!-- <form action="https://catbox.moe/user/api.php" method="post" enctype="multipart/form-data" id="dropzoneUpload" target="frame1">
         <input type="hidden" name="reqtype" value="fileupload">
         <input type="hidden" name="userhash" value="9c0ab3d006f4d0d08f0c7ac95">
         <label>
@@ -37,18 +37,30 @@
         </label>
     </form>
     <p class="show"></p>
-    <iframe id="frames1" name="frame1" frameborder="0" height="40"></iframe></div>
+    <iframe id="frames1" name="frame1" frameborder="0" height="40"></iframe> -->
+    </div>
     <div id="add-song">
-    	<label>歌名：<input type="text" id="song-name"></label>
+<!--     	<label>歌名：<input type="text" id="song-name"></label>
     	<label>歌手：<input type="text" id="song-name"></label>
     	<label>链接：<input type="text" id="song-name" placeholder="请将外链地址复制到这"></label>
-    	<button type="button">保存</button>
+    	<button type="button">保存</button> -->
     </div>
 </div>
 </div>
+    
+    
     <script src="vendor/jquery.js"></script>
-    <script src="node_modules/leancloud-storage/dist/av-min.js"></script>
-    <script src="src/js/admin.js"></script>
+    <script src="src/js/admin/event_hub.js"></script>
+<!--     <script src="node_modules/leancloud-storage/dist/av-min.js"></script> -->
+<script src="//cdn1.lncld.net/static/js/3.6.7/av-min.js"></script>
+
+    <script src="src/js/admin/av_init.js"></script>
+    <script src="src/js/admin/song_list.js"></script>
+    <script src="src/js/admin/save_song.js"></script>
+    <script src="src/js/admin/upload_song.js"></script>
+    <script src="src/js/admin/save_data.js"></script>
+
+
 </body>
 
 </html>

@@ -1,11 +1,4 @@
-var AV = require('leancloud-storage');
-var APP_ID = 'uTQBfXRvG74xCMS4qp6uS1SQ-gzGzoHsz';
-var APP_KEY = 'xKkNrIrIOJ1lh22szv7VfvNS';
 
-AV.init({
-	appId: APP_ID,
-	appKey: APP_KEY
-});
 //获取名为Song的Class库
 /*var Song = AV.Object.extend('Song');
 var song = new Song();
@@ -17,7 +10,8 @@ url: 'htpp://xxx.mp3'
 alert('歌曲保存成功!');
 });*/
 
-var Playlist = AV.Object.extend('Playlist');
+function xxx(xxxx) {
+	var Playlist = AV.Object.extend('Playlist');
 var playList = new Playlist();
 playList.save({
 	listName: 'xx的专辑',
@@ -28,3 +22,4 @@ playList.save({
 }).then(function(object) {
 	alert('歌单保存成功!');
 })
+}

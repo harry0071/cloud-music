@@ -1,0 +1,359 @@
+body,div,h1,h2,h3,h4,h5,h6,html,input,li,ol,p,td,ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav,section {
+  display: block;
+}
+
+body,html,img {
+  border: 0;
+}
+
+em,i {
+  font-style: normal;
+}
+
+[hidefocus] {
+  outline: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-size: 100%;
+}
+
+q:after,q:before {
+  content: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+b,em,h1,h2,h3,h4,h5,h6 {
+  font-weight: 400;
+}
+
+a,s,u {
+  text-decoration: none;
+}
+
+body,input {
+  font: 14px/1.5 Helvetica,sans-serif;
+  color: #333;
+  outline: 0;
+}
+
+body,html {
+  background-color: transparent;
+}
+
+a,a:visited {
+  color: #333;
+}
+
+body,html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+a,b,body,div,em,h1,h2,h3,h4,h5,h6,html,i,li,ol,p,s,span,td,u,ul {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+input:focus {
+  outline: 0;
+}
+
+input::-webkit-input-placeholder {
+  color: #969696;
+}
+
+.f-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.f-thide {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
+}
+
+.f-thide2,.f-thide3,.f-thide4 {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.f-thide3 {
+  -webkit-line-clamp: 3;
+}
+
+.f-thide4 {
+  -webkit-line-clamp: 4;
+}
+
+.f-bd {
+  position: relative;
+}
+
+.f-bd:after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  border: 0 solid #000000;
+  border: 0 solid rgba(0, 0, 0, .1);
+}
+
+.f-bd-btm:after {
+  border-bottom-width: 1px;
+}
+
+.u-height {
+  height: 100%;
+}
+
+.u-img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.u-hmsprt {
+  background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+  background-size: 166px 97px;
+}
+
+
+
+@media screen and (min-width:600px) {
+  html {
+    background-color: #eee;
+  }
+}
+
+li,ul {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+li {
+  list-style: none;
+}
+
+.m-sgitem {
+  padding-left: 10px;
+}
+
+.m-sgitem,.m-sgitem .sgfl {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.m-sgitem .sgfl {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 28px;
+  font-size: 17px;
+  color: #999;
+}
+.m-sgitem:nth-of-type(1) .sgfl{
+  color: #df3436;
+}
+.m-sgitem:nth-of-type(2) .sgfl{
+  color: #df3436;
+}
+.m-sgitem:nth-of-type(3) .sgfl{
+  color: #df3436;
+}
+
+.m-sgitem .sgfr {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.m-sgitem .sgchfl,.m-sgitem .sgfr {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.m-sgitem .sgchfl {
+  padding: 6px 0;
+  width: 0;
+}
+
+.m-sgitem .sgtl {
+  font-size: 17px;
+}
+
+.m-sgitem .sginfo {
+  font-size: 12px;
+  color: #888;
+}
+
+.m-sgitem .sgchfr {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.m-sgitem .sgchply {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-position: -24px 0;
+}
+
+.m-hmhot .hotop {
+  position: relative;
+  padding-top: 38.9%;
+  overflow: hidden;
+  background: url(//s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
+  background-size: contain;
+}
+
+.m-hmhot .hotop:after {
+  content: " ";
+  z-index: 1;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.m-hmhot .hotop:after,.m-hmhot .hotopct {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.m-hmhot .hotopct {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 2;
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.m-hmhot .hoticon {
+  width: 142px;
+  height: 67px;
+  background-position: -24px -30px;
+}
+
+.m-hmhot .hottime {
+  margin-top: 10px;
+  color: hsla(0, 0%, 100%, .8);
+  font-size: 12px;
+  -webkit-transform: scale(.91);
+  -ms-transform: scale(.91);
+  transform: scale(.91);
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+}
+
+.m-hmhot .hotcont {
+  position: relative;
+}
+
+.m-hmhot .hotdn {
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:3) {
+  .m-hmhot .hotop {
+    background-image: url(//s3.music.126.net/m/s/img/hot_music_bg_3x.jpg?2bfefd3ba37eaffbd66b7d108b9de26a);
+  }
+}
+
+@media only screen and (device-width:375px) and (device-height:812px) {
+  .m-hmhot {
+    padding: constant(safe-area-inset-top) constant(safe-area-inset-right) constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+}
+
+body {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bottom-line{
+    text-align: center;
+    color: #bbb;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bottom-line .line{
+    border-top: 1px solid #bbb;
+    width: 30%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
