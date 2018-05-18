@@ -159,7 +159,8 @@
 					$allP.removeClass('active').eq(i).addClass('active');
 
 					//move = -$allP.eq(i).position().top+32;
-					move = -$allP[i].offsetTop+32;
+					let top = -$allP[i].offsetTop;
+					move = top+32;
 					if (move>0 || i==0) {
 						return;
 					}
