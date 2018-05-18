@@ -16,7 +16,7 @@ body{
   margin: 20px 0 8px;
 }
 .sticky{
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -87,9 +87,6 @@ section.topbar > a::after{
   bottom: 1px;
   left: 0;
   width: 100%;
-}
-.tab-content{
-  margin-top: 105px;
 }
 .tab-content > li{
   display: none;

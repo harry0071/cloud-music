@@ -156,12 +156,13 @@
 				let nextTime = $allP.eq(i+1).data('time');
 				let move = 0;
 				if (songTime>currentTime && songTime <nextTime) {
+					$allP.removeClass('active').eq(i).addClass('active');
+
 					//move = -$allP.eq(i).position().top+32;
 					move = -$allP[i].offsetTop+32;
 					if (move>0 || i==0) {
-						move=0;
+						return;
 					}
-					$allP.removeClass('active').eq(i).addClass('active');
 					$lines.css({
 						'-webkit-transform': `translateY(${move}px)`,
 						'-ms-transform': `translateY(${move}px)`,
