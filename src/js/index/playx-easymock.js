@@ -153,14 +153,10 @@
 			let $lines = $(this.view.el).find('.lines');
 			$allP.each((i,item) =>{
 				let currentTime = $allP.eq(i).data('time');
-				let nextTime = $allP.eq(i+1).data('time');
-				let move = 0;
-				if (songTime>currentTime && songTime <nextTime) {
+				let top  = $lines.offset().top-$allP.eq(i).offset().top;
+				let move = top + 32;
+				if (songTime>currentTime) {
 					$allP.removeClass('active').eq(i).addClass('active');
-
-					//move = -$allP.eq(i).position().top+32;
-					let top = -$allP[i].offsetTop;
-					move = top+32;
 					if (move>0 || i==0) {
 						return;
 					}

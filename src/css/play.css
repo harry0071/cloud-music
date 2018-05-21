@@ -58,23 +58,26 @@ background: url('http://s3.music.126.net/m/s/img/disc_default.png?7c9b3adc16f548
 	text-align: center;
 	line-height: 2;
 	margin-top: 20px;
+	padding:0 35px;
 }
 .song-description h1{
 	color: #fefefe;
 	font-size: 18px;
 	font-weight: normal;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .song-description p{
 	font-size: 16px;
 	line-height: 2;
 }
 .song-description .lines{
-	padding: 0 36px;
 	height: 88px;
 	transition: transform 0.3s;
 }
 .song-description .lyric{
-	/*height: 72px;*/
+	position: relative;
 	overflow: hidden;
 	margin-top: 14px;
 }
