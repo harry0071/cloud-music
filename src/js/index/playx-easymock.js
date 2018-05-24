@@ -7,7 +7,7 @@
     <div id="play">
     <audio src="${data.url}"></audio>
     <div class="logo-container">
-    <img src="../src/imgs/favicon.png" width=24 height=24><p class="logo">STAGE轻音乐</p></div>
+    <img src="./src/imgs/favicon.png" width=24 height=24><p class="logo">STAGE轻音乐</p></div>
       <div class="disc-container">
       <img class="pointer" src="//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862 " alt="">
       <div class="disc">
@@ -79,7 +79,9 @@
 			bg: ''
 		},
 		getSongbyId(id) {
-			return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}`, ({datas}) => {
+			//https://musicapi.leanapp.cn/lyric?id=${id}
+			//https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}
+			return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}`, (datas) => {
 				if (datas.lrc) {
 					this.data.lrc = datas.lrc.lyric;
 				} else {
@@ -98,7 +100,7 @@
 						id: id,
 						songName: datas.songs[0].name,
 						singer: singer,
-						url: `http://music.163.com/song/media/outer/url?id=${id}.mp3`,
+						url: id==1?`http://dl.stream.qqmusic.qq.com/C4000031TAKo0095np.m4a?guid=6825090368&vkey=6865CAA03A402D634CE88DE8DFC7755CBA65C35DD336D1517AE1235FC15F6D4D8002DEBC6345DB85EB6F43AFA9B2B76B36EB95B5B02FEAF8&uin=0&fromtag=38`:`http://music.163.com/song/media/outer/url?id=${id}.mp3`,
 						pic: datas.songs[0].al.picUrl + '?imageView&thumbnail=170y170&quality=75&tostatic=0',
 						bg: datas.songs[0].al.picUrl + '?imageView&thumbnail=20y20&quality=75&tostatic=0'
 					});

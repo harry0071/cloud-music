@@ -7,6 +7,7 @@
     <!-- 忽略电话和邮箱 -->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>STAGE轻音乐 - 发现更多好音乐</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="src/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="src/css/page-1.css">
     <link rel="stylesheet" type="text/css" href="src/css/hot.css">
@@ -148,6 +149,11 @@
     <script src="src/js/index/page_1.js"></script>
     <script src="src/js/index/hot.js"></script>
     <script src="src/js/index/page_3.js"></script>
+        <script>
+    if(!!window.ActiveXObject || "ActiveXObject" in window){
+        document.body.innerHTML = '<h1 style="font-size:30px;">请使用chrome浏览器打开此页！</h1>';
+    }
+    </script>
 </body>
 
 </html>
