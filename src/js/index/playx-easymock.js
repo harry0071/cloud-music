@@ -81,7 +81,7 @@
 		getSongbyId(id) {
 			//https://musicapi.leanapp.cn/lyric?id=${id}
 			//https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}
-			return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}`, (datas) => {
+			return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}`, ({datas}) => {
 				if (datas.lrc) {
 					this.data.lrc = datas.lrc.lyric;
 				} else {
