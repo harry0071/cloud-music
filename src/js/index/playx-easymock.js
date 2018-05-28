@@ -100,7 +100,7 @@
 						id: id,
 						songName: datas.songs[0].name,
 						singer: singer,
-						url: id==1?`http://dl.stream.qqmusic.qq.com/C4000031TAKo0095np.m4a?guid=6825090368&vkey=6865CAA03A402D634CE88DE8DFC7755CBA65C35DD336D1517AE1235FC15F6D4D8002DEBC6345DB85EB6F43AFA9B2B76B36EB95B5B02FEAF8&uin=0&fromtag=38`:`http://music.163.com/song/media/outer/url?id=${id}.mp3`,
+						url: id==1?`http://link.hhtjim.com/qq/0031TAKo0095np.mp3`:`http://music.163.com/song/media/outer/url?id=${id}.mp3`,
 						pic: datas.songs[0].al.picUrl + '?imageView&thumbnail=170y170&quality=75&tostatic=0',
 						bg: datas.songs[0].al.picUrl + '?imageView&thumbnail=20y20&quality=75&tostatic=0'
 					});
@@ -133,11 +133,11 @@
 				if (toPlaying) {
 					$audio[0].play();
 					$icon.hide();
-					$disc.add($pointer).addClass('active');
+					$disc.addClass('active');
 					$audio.on('ended', () => {
 						toPlaying = false;
 						$icon.show();
-						$disc.add($pointer).removeClass('active');
+						$disc.removeClass('active');
 					});
 					$audio.on('timeupdate', ev=> {
 						this.showLrc($audio[0].currentTime);
@@ -145,7 +145,7 @@
 				} else {
 					$audio[0].pause();
 					$icon.show();
-					$disc.add($pointer).removeClass('active');
+					$disc.removeClass('active');
 
 				}
 			});
