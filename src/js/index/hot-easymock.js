@@ -36,14 +36,11 @@
 			songs:[],
 		},
 		find() {
-			return $.get('http://120.79.162.149:3000/top/list?idx=1', ({playlist}) => {
+			return $.get('https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/hot', ({playlist}) => {
 				this.data.time = playlist.trackNumberUpdateTime;
 				
 				let tracks = playlist.tracks;
 				$(tracks).each((index, el) =>{
-					if (index>19) {
-						return;
-					}
 					let {id,name,ar,al}=el;
 					let alia = '';
 
@@ -68,19 +65,19 @@
 			this.view=view;
 			this.$el=$(this.view.el);
 			this.model=model;
-			this.bindEventHub();
 			this.flag=true;
+			this.bindEventHub();
 		},
 		bindEventHub(){
 			window.eventHub.listen('clickTab',(tabName)=>{
 				if (tabName === 'page-2') {
 					this.$el.show();
-					if(this.flag){
+					if (this.flag) {
 						this.model.find().then(()=>{
-			this.view.render(this.model.data);
-			});
-						this.flag=false;
-					}
+					this.view.render(this.model.data);
+					this.flag=false;
+				})
+			}
 				}else{
 					this.$el.hide();
 				}

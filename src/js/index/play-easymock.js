@@ -81,7 +81,8 @@
 		getSongbyId(id) {
 			//https://musicapi.leanapp.cn/lyric?id=${id}
 			//https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}
-			return $.get(`https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}`, ({datas}) => {
+			//https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}
+			return $.get(`https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}`, (datas) => {
 				if (datas.lrc) {
 					this.data.lrc = datas.lrc.lyric;
 				} else {
@@ -100,7 +101,7 @@
 						id: id,
 						songName: datas.songs[0].name,
 						singer: singer,
-						url: id==1?`http://link.hhtjim.com/qq/0031TAKo0095np.mp3`:`http://music.163.com/song/media/outer/url?id=${id}.mp3`,
+						url: `http://music.163.com/song/media/outer/url?id=${id}.mp3`,
 						pic: datas.songs[0].al.picUrl + '?imageView&thumbnail=170y170&quality=75&tostatic=0',
 						bg: datas.songs[0].al.picUrl + '?imageView&thumbnail=20y20&quality=75&tostatic=0'
 					});

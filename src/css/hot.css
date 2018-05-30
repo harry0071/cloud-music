@@ -158,13 +158,6 @@ input::-webkit-input-placeholder {
 }
 
 
-
-@media screen and (min-width:600px) {
-  html {
-    background-color: #eee;
-  }
-}
-
 li,ul {
   margin: 0;
   padding: 0;

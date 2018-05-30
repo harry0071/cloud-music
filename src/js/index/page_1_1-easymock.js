@@ -22,11 +22,8 @@
 			playlists:[]
 		},
 		find(){
-			return $.get('http://120.79.162.149:3000/personalized', ({result}) => {
+			return $.get('https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/personalized', ({result}) => {
 				$(result).each((index, el) =>{
-					if (index>5) {
-						return;
-					}
 					let {id,name,picUrl,playCount} = el;
 					this.data.playlists.push({
 						id,
