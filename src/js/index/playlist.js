@@ -20,10 +20,11 @@
             </section>
             <section class="pylst_intro">
                 <div class="lstit_tags">
-                	标签：
-                    <em class="f-bd f-bd-full lstit_tag">${data.tags[0]}</em>
-                    <em class="f-bd f-bd-full lstit_tag">${data.tags[1]}</em>
-                    <em class="f-bd f-bd-full lstit_tag">${data.tags[2]}</em>
+                	标签：`;
+                    $(data.tags).each((i,tag) => {
+                    	this.template += `<em class="f-bd f-bd-full lstit_tag">${tag}</em>`;
+                    });
+                    this.template +=`
                 </div>
                 <div class="u-intro">
                     <div class="f-brk">简介：`;
@@ -50,7 +51,7 @@
                         <div class="sgi_fr f-bd f-bd-btm">
                             <div class="sgich_fl">
                                 <div class="f-thide sgich_tl">
-                                	${song.songName}${song.alia}
+                                	${song.songName}${song.alias}
                                 </div>
                                 <div class="f-thide sgich_info">
                                     ${song.singer} - ${song.album}

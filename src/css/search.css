@@ -1,0 +1,13 @@
+#search-area{
+	text-align: center;
+	margin: 15px 0;
+}
+#search-btn{
+	padding: 0 30px;
+	height: 30px;
+	width: 94%;
+	color: #333;
+	font-size: 14px;
+	background: #ebecec;
+	border-radius: 15px;
+}

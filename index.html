@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="src/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="src/css/page-1.css">
     <link rel="stylesheet" type="text/css" href="src/css/hot.css">
-    <script src="https://cdn.bootcss.com/less.js/3.0.2/less.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/css/search.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                 <div class="logo">
                     <p style="color: white;margin: 0;">STAGE轻音乐</p>
                 </div>
-                <a href="javascript:;">关于作者</a>
+                <a href="https://github.com/harry0071">关于作者</a>
             </section>
             <section class="globalTabs" id="tabs">
                 <ul class="tabs-nav">
@@ -89,12 +89,12 @@
                 <section class="art">
                     <div class="logo">
                         <div class="link-wrapper">
-                        STAGE轻音乐 发现更多好音乐
+                            STAGE轻音乐 发现更多好音乐
+                        </div>
+                        <div class="copyright">
+                            本程序由孙大吉独立制作
+                        </div>
                     </div>
-                    <div class="copyright">
-                        本程序由孙大吉独立制作
-                    </div>
-                </div>
                 </section>
             </li>
             <li class="page-2">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="hotcont">
                         <div class="m-sglst">
-                            <img id="loading" style="width:auto;margin: 20px auto;display: block" data-v-134e57fb="" src="http://ww1.sinaimg.cn/large/87c01ec7gy1frt45t97p9g2014014jr5.gif" alt="" width="40" height="40">
+                            <img id="loading" style="width:auto;margin: 20px auto;display: block" src="http://ww1.sinaimg.cn/large/87c01ec7gy1frt45t97p9g2014014jr5.gif" width="40" height="40">
                             <!-- <a class="m-sgitem" href="/m/song?id=516076896">
                                 <div class="sgfl sgfl-cred">01</div>
                                 <div class="sgfr f-bd f-bd-btm">
@@ -134,26 +134,29 @@
                     </div>
                     <div class="bottom-line">本程序由孙大吉独立制作</div>
                 </div>
-    </li>
-    <li class="page-3">
-        <input id="search" type="text">
-        有空再做_(:з」∠)_ 
-        <ol id="searchResult"></ol>
-    </li>
-    </ol>
+            </li>
+            <li class="page-3">
+                <div id="search-area">
+                    <input id="search-btn" type="text" placeholder="搜索歌曲、歌手、专辑">
+                </div>
+                <img id="loading" class="search-loading" style="width:auto;margin: 20px auto;display: none" src="http://ww1.sinaimg.cn/large/87c01ec7gy1frt45t97p9g2014014jr5.gif" width="40" height="40">
+                <div class="m-sglst" id="search-result">
+                </div>
+            </li>
+        </ol>
     </div>
-    <script src="vendor/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <!-- <script src="//cdn1.lncld.net/static/js/3.6.7/av-min.js"></script>
     <script src="src/js/admin/av_init.js"></script> -->
     <script src="src/js/admin/event_hub.js"></script>
     <script src="src/js/index/tab_nav.js"></script>
     <script src="src/js/index/page_1.js"></script>
     <script src="src/js/index/hot.js"></script>
-    <script src="src/js/index/page_3.js"></script>
-        <script>
-    if(!!window.ActiveXObject || "ActiveXObject" in window){
-        document.body.innerHTML = '<h1 style="font-size:30px;">请使用chrome浏览器打开此页！</h1>';
-    }
+    <script src="src/js/index/search.js"></script>
+    <script>
+        if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            document.body.innerHTML = '<h1 style="font-size:30px;">请使用chrome浏览器打开此页！</h1>';
+        }
     </script>
 </body>
 

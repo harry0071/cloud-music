@@ -15,7 +15,6 @@
 				let $li = $(ev.currentTarget);
 				let tabName = $li.data('tabname');
 				window.eventHub.publish('clickTab',tabName);
-				console.log(1)
 				$li.addClass('active').siblings('li').removeClass('active');
 			});
 		},
