@@ -85,28 +85,29 @@
 		},
 
 		getByid(id){
-			return $.get(`http://120.79.162.149:3000/playlist/detail?id=${id}`, ({result}) => {
+			//http://120.79.162.149:3000/
+			return $.get(`https://cloud-music.leanapp.cn/playlist/detail?id=${id}`, ({playlist}) => {
 				Object.assign(this.data,{
-					tags:result.tags,
-					coverImgUrl:result.coverImgUrl,
-					description:result.description,
-					name:result.name,
-					playCount:result.playCount,
+					tags:playlist.tags,
+					coverImgUrl:playlist.coverImgUrl,
+					description:playlist.description,
+					name:playlist.name,
+					playCount:playlist.playCount,
 				});
 				
-				let tracks = result.tracks;
+				let tracks = playlist.tracks;
 				$(tracks).each((index, el) =>{
-					let {id,name,artists,album}=el;
+					let {id,name,ar,al,alia}=el;
 					let alias = '';
 
-					if(el.alias.length>0){
-						alias = `(${el.alias[0]})`;
+					if(alia.length>0){
+						alias = `(${alia[0]})`;
 					}
 					this.data.songs.push({
 						id,
 						songName:name,
-						singer:artists[0].name,
-						album:album.name,
+						singer:ar[0].name,
+						album:al.name,
 						alias:alias,
 
 					});

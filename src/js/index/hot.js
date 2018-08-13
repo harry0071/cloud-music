@@ -36,7 +36,8 @@
 			songs:[],
 		},
 		find() {
-			return $.get('http://120.79.162.149:3000/top/list?idx=1', ({playlist}) => {
+			//http://120.79.162.149:3000/
+			return $.get('https://cloud-music.leanapp.cn/top/list?idx=1', ({playlist}) => {
 				this.data.time = playlist.trackNumberUpdateTime;
 				
 				let tracks = playlist.tracks;

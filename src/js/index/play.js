@@ -79,10 +79,9 @@
 			bg: ''
 		},
 		getSongbyId(id) {
-			//https://musicapi.leanapp.cn/lyric?id=${id}
-			//https://www.easy-mock.com/mock/5aeda895c7cbfb7872a17616/music/lyric?id=${id}
+			//http://120.79.162.149:3000/
 			//https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}
-			return $.get(`http://120.79.162.149:3000/lyric?id=${id}`, (datas) => {
+			return $.get(`https://cloud-music.leanapp.cn/lyric?id=${id}`, (datas) => {
 				if (datas.lrc) {
 					this.data.lrc = datas.lrc.lyric;
 				} else {

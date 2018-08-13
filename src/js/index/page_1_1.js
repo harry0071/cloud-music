@@ -22,7 +22,8 @@
 			playlists:[]
 		},
 		find(){
-			return $.get('http://120.79.162.149:3000/personalized', ({result}) => {
+			//http://120.79.162.149:3000/
+			return $.get('https://cloud-music.leanapp.cn/personalized', ({result}) => {
 				$(result).each((index, el) =>{
 					if (index>5) {
 						return;

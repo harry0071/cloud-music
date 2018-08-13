@@ -29,7 +29,8 @@
 			songs: []
 		},
 		find() {
-			return $.get('http://120.79.162.149:3000/personalized/newsong', datas => {
+			//http://120.79.162.149:3000/
+			return $.get('https://cloud-music.leanapp.cn/personalized/newsong', datas => {
 				$(datas.result).each((index,item) => {
 					let alias,singer2;
 					if(item.song.alias[0]){
