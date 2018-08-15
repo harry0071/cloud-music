@@ -88,7 +88,7 @@
 				}
 
 			}).then(() => {
-				return $.get(`http://120.79.162.149:3000/song/detail?ids=${id}`, (datas) => {
+				return $.get(`https://cloud-music.leanapp.cn/song/detail?ids=${id}`, (datas) => {
 					var singer = '';
 					if (datas.songs[0].ar[1]) {
 						singer = datas.songs[0].ar[0].name + ' / ' + datas.songs[0].ar[1].name
