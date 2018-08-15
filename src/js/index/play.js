@@ -25,10 +25,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="links">
-      <a href="#">打开</a>
-      <a class="main" href="#">下载</a>
-    </div> -->
+    <div class="links">
+      <a class="main" href="${data.url}">下 载 这 首 歌</a>
+    </div>
     </div>`;
 			$(this.el).html(this.template);
 			let title = $('.song-description>h1').html();
