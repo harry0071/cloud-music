@@ -9808,3 +9808,10 @@ li {
     display: inline-block;
     vertical-align: middle;
 }
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+}

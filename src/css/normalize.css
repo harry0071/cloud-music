@@ -483,3 +483,10 @@ a{color: inherit;}
 /* 默认border-box */
 *,*:before,*:after{box-sizing: border-box;}
 /*我的添加结束*/
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+}
