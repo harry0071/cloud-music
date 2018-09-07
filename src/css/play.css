@@ -103,4 +103,7 @@ background: url('http://s3.music.126.net/m/s/img/disc_default.png?7c9b3adc16f548
 	color: white;
 	border-radius: 24px;
 	width: 90%;
-}	
+}
+#app{
+	overflow-x: hidden;
+}
