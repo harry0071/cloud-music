@@ -7,7 +7,9 @@
 ## 预览图
 ![1.jpg](https://i.loli.net/2018/09/06/5b90e0c72e288.jpg)          
 ![2.jpg](https://i.loli.net/2018/09/06/5b90e0f4b3b71.jpg)          
-![3.jpg](https://i.loli.net/2018/09/06/5b90e16512d04.jpg)           
+![3.jpg](https://i.loli.net/2018/09/06/5b90e16512d04.jpg) 
+
+![xxxx.gif](https://i.loli.net/2018/09/12/5b98718ab1799.gif)          
 
 ## 预览链接
 👉 [点击预览](https://harry0071.github.io/cloud-music/)
